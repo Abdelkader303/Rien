@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    perspective: 1000px;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotate 15s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #04EDFC;
+    border: 2px solid #04EDFC;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(4, 237, 252, 0.5);
+    text-align: center;
+    padding: 20px;
+}
+
+.face span {
+    display: block;
+    line-height: 1.3;
+    text-shadow: 0 0 10px #04EDFC;
+}
+
+.front {
+    transform: translateZ(100px);
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+.lights {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.light {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, #04EDFC, transparent);
+    opacity: 0;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateX(0) rotateY(0);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* التكيف مع أحجام الشاشات المختلفة */
+@media (max-width: 768px) {
+    .cube {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .face {
+        font-size: 18px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cube {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .face {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
